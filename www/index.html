@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>My Launcher</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app">
+        <div class="top-bar">
+            <button class="btn" onclick="changeWallpaper()">🏞️ Wallpaper</button>
+            <button class="btn" onclick="resetAll()">🔄 Reset All</button>
+        </div>
+        <div id="appGrid" class="grid"></div>
+        <input type="file" id="iconPicker" accept="image/*" style="display:none" onchange="changeIcon(event)">
+        <input type="file" id="wallpaperPicker" accept="image/*" style="display:none" onchange="setWallpaper(event)">
+    </div>
+    <div id="dialog" class="dialog" style="display:none;">
+        <div class="dialog-box">
+            <h3 id="dialogTitle">Customize</h3>
+            <button onclick="pickIcon()">🎨 Change Icon</button>
+            <button onclick="renameApp()">✏️ Rename</button>
+            <button onclick="resetIcon()">🔄 Reset</button>
+            <button onclick="closeDialog()">❌ Cancel</button>
+        </div>
+    </div>
+    <script src="js/app.js"></script>
+</body>
+</html>
