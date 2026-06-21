@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
     - name: Checkout Code
       uses: actions/checkout@v3
@@ -17,27 +18,37 @@ jobs:
       with:
         node-version: '18'
     
-    - name: Setup Java
+    - name: Setup Java 11
       uses: actions/setup-java@v3
       with:
-        java-version: '17'
+        java-version: '11'
         distribution: 'temurin'
-    
-    - name: Setup Android SDK
-      uses: android-actions/setup-android@v3
-    
+
+    - name: Setup Android SDK Tools
+      uses: android-actions/setup-android@v2
+      with:
+        api-level: 30
+        build-tools: 30.0.3
+        target: android-30
+
     - name: Install Cordova
-      run: npm install -g cordova
+      run: |
+        npm install -g cordova@11.0.0
+        cordova --version
     
-    - name: Install Dependencies
-      run: npm install
-    
-    - name: Add Android Platform
-      run: cordova platform add android
+    - name: Create Android Platform
+      run: |
+        cordova platform add android@10.1.0
     
     - name: Build APK
-      run: cordova build android --debug
-    
+      run: |
+        cordova build android --debug
+      
+    - name: Find APK
+      run: |
+        echo "Checking APK location..."
+        find . -name "*.apk" -type f
+        
     - name: Upload APK
       uses: actions/upload-artifact@v4
       with:
