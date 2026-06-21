@@ -26,3 +26,14 @@
         </config-file>
     </platform>
 </widget>
+<platform name="android">
+    <preference name="android-minSdkVersion" value="22" />
+    <preference name="android-targetSdkVersion" value="30" />
+    
+    <!-- Ye lines zaroor add karein -->
+    <preference name="AndroidXEnabled" value="true" />
+    <preference name="GradlePluginVersion" value="4.2.0" />
+    <preference name="GradleVersion" value="7.1.1" />
+    
+    <!-- Baaki aapka code... -->
+</platform>
